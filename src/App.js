@@ -77,12 +77,7 @@ function App() {
 
   return (
     <Layout style={{height: '100vh'}}>
-      <Header style={{ height: "64px", lineHeight: '32px',
-                padding: '10px', 
-                backgroundColor: "white", 
-                display: 'flex',
-                flexDirection: 'row',
-                justifyContent: 'space-between' }} >
+      <Header class="header">
         <h1 style={{display: "inline"}}>3D Slicer download map</h1>
         <span>{data ?  null : <Spin size="large" />}</span>
 
