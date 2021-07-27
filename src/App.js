@@ -66,7 +66,7 @@ function App() {
 
   const downloadHeatmapLayer = new HeatmapLayer({
     id: 'address-layer',
-    opacity: 0.65,
+    opacity: 0.55,
     data: filteredAccessData,
     getPosition: d => d.location,
     getWeight: 1,
