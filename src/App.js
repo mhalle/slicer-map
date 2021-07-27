@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { HeatmapLayer } from '@deck.gl/aggregation-layers';
-import { DatePicker, Layout } from 'antd';
+import { DatePicker, Layout, Spin } from 'antd';
 import moment from 'moment';
 // import { useQueryParam, ArrayParam } from 'use-query-params';
 
@@ -84,6 +84,8 @@ function App() {
                 flexDirection: 'row',
                 justifyContent: 'space-between' }} >
         <h1 style={{display: "inline"}}>3D Slicer download map</h1>
+        <span>{data ?  null : <Spin size="large" />}</span>
+
         <RangePicker style={{}}
           allowEmpty={[true, true]}
           ranges={ {
