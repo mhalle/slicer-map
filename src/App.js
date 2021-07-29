@@ -86,10 +86,13 @@ function App() {
     <Layout style={{height: '100vh'}}>
       <Header className="header">
         <h1 style={{display: "inline"}}>3D Slicer download map</h1>
-        <span>{data ?  null : <Spin size="large" />}</span>
+        <span>{data ?  
+                <span className="total-downloads">{filteredAccessData.length} downloads</span> 
+                : <Spin size="large" />}</span>
 
         <RangePicker style={{}}
           allowEmpty={[true, true]}
+          size="large"
           ranges={ {
             "All time": [null, null],
             "Last week": [moment().subtract(1, 'week'), moment()],
