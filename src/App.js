@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { HeatmapLayer } from '@deck.gl/aggregation-layers';
 import { DatePicker, Layout, Spin } from 'antd';
+import TextClusterLayer from './TextClusterLayer';
 import moment from 'moment';
 // import { useQueryParam, ArrayParam } from 'use-query-params';
 
@@ -45,9 +46,7 @@ function App() {
     }
   }, [data]);
 
-
   const filteredAccessData = useMemo(() => {
-    
     if(!data) {
       return [];
     }
@@ -73,11 +72,19 @@ function App() {
     aggregation: 'SUM'
   });
 
-  const layers = [downloadHeatmapLayer];
+  const textLayer = new TextClusterLayer({
+    id: "text",
+    getPosition: d => d.location,
+    sizeScale: 0.65,
+    getTextColor: [100, 255, 100, 255],
+    data: filteredAccessData
+  })
+
+  const layers = [downloadHeatmapLayer, textLayer];
 
   return (
     <Layout style={{height: '100vh'}}>
-      <Header class="header">
+      <Header className="header">
         <h1 style={{display: "inline"}}>3D Slicer download map</h1>
         <span>{data ?  null : <Spin size="large" />}</span>
 
